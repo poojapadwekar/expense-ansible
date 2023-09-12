@@ -7,7 +7,7 @@
 
     - name: Copy the repo file
       ansible.builtin.copy:
-        src: /mysql.conf
+        src: /mysql.repo
         dest: /etc/yum.repos.d/mysql.repo
 
     - name: Install the mysql-community
