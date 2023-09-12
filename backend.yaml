@@ -1,0 +1,37 @@
+- name: Backend setup
+  hosts: all
+  become: yes
+  tasks:
+    - name: Setup NodeJS repo
+      ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
+
+    - name: Install NodeJS
+      ansible.builtin.dnf:
+        name: nodejs
+        state: latest
+
+    - name: User addition
+      ansible.builtin.user:
+        name: expense
+
+    - name: Creating the directory
+      ansible.builtin.file:
+        path: /add
+        state: directory
+
+    - name: Download and extract the file
+      ansible.builtin.unarchive:
+        src: https://expense-artifacts.s3.amazonaws.com/backend.zip
+        dest: /app
+        remote_src: yes
+
+    - name: Change the directory
+      ansible.builtin.shell: npm install
+      args:
+        chdir: /app
+
+    - name: copying the file
+      ansible.builtin.copy:
+        src: /etc/systemd/system/backend.service
+        dest: /backend.conf
+
