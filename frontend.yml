@@ -4,8 +4,8 @@
   tasks:
     - name: Installing the nginx
       ansible.builtin.dnf:
-          name: httpd
-          state: latest
+          name: nginx
+          state: present
 
     - name: Copying the file
       ansible.builtin.copy:
