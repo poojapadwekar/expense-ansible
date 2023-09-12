@@ -20,19 +20,14 @@
 
     - name: Creating the directory
       ansible.builtin.file:
-        path: /add
+        path: /app
         state: directory
 
     - name: Download and extract the file
       ansible.builtin.unarchive:
         src: https://expense-artifacts.s3.amazonaws.com/backend.zip
-        dest: /add
+        dest: /app
         remote_src: yes
-
-    - name: Creating the directory
-      ansible.builtin.file:
-        path: /add
-        state: directory
 
     - name: Install Node js dependencies
       ansible.builtin.shell: npm install
