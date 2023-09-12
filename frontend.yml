@@ -8,8 +8,8 @@
           state: latest
     - name: Copying the file
       ansible.builtin.copy:
-          src: /etc/nginx/default.d/expense.conf
-          dest: expense.conf
+          src: expense.conf
+          dest: /etc/nginx/default.d/expense.conf
     - name: Removing the configuration
       ansible.builtin.file:
           path: /usr/share/nginx/html
