@@ -5,8 +5,8 @@
   tasks:
     - name: Installing the nginx
       ansible.builtin.dnf:
-        name: httpd
-        state: latest
+          name: httpd
+          state: latest
     - name: Copying the file
       ansible.builtin.copy:
           src: /etc/nginx/default.d/expense.conf
@@ -26,9 +26,9 @@
           remote_src: yes
     - name: Start service nginx
       ansible.builtin.service:
-        name: nginx
-        state: started
-        enabled: yes
+          name: nginx
+          state: started
+          enabled: yes
 
 
 
