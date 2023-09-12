@@ -29,6 +29,11 @@
         dest: /add
         remote_src: yes
 
+    - name: Creating the directory
+      ansible.builtin.file:
+        path: /add
+        state: directory
+
     - name: Install Node js dependencies
       ansible.builtin.shell: npm install
       args:
@@ -49,8 +54,6 @@
         state: restarted
         enabled: yes
         daemon-reload: yes
-
-
 
     - name: load the schema
       ansible.builtin.shell: mysql -h mysql.saujpoo.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
