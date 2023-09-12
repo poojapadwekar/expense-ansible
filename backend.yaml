@@ -29,10 +29,14 @@
         dest: /add
         remote_src: yes
 
-    - name: Install Node js & Change the directory
+    - name: Install Node js dependencies
       ansible.builtin.shell: npm install
       args:
         chdir: /app
+
+    - name: install the mysql
+      ansible.builtin.dnf:
+        name: mysql
 
     - name: copying the file
       ansible.builtin.copy:
@@ -46,10 +50,7 @@
         enabled: yes
         daemon-reload: yes
 
-    - name: install the mysql
-      ansible.builtin.dnf:
-        name: mysql
-        state: present
+
 
     - name: load the schema
       ansible.builtin.shell: mysql -h mysql.saujpoo.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
