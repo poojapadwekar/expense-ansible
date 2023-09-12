@@ -17,10 +17,10 @@
           path: /usr/share/nginx/html
           state: absent
 
-    - name: Creating old nginx contnet
+    - name: Creating nginx directory
       ansible.builtin.file:
           path: /usr/share/nginx/html
-          state: absent
+          state: directory
 
     - name: Download and extract a file
       ansible.builtin.unarchive:
