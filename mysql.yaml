@@ -7,8 +7,8 @@
 
     - name: Copy the repo file
       ansible.builtin.copy:
-        src: /etc/yum.repos.d/mysql.repo
-        dest: /expense.conf
+        src: /expense.conf
+        dest: /etc/yum.repos.d/mysql.repo
 
     - name: Install the mysql-community
       ansible.builtin.dnf:
