@@ -2,10 +2,10 @@
   hosts: all
   become: yes
   tasks:
-    - - name: Copy the repo file
-        ansible.builtin.copy:
-          src: mysql.repo
-          dest: /etc/yum.repos.d/mysql.repo
+    - name: Copy the repo file
+      ansible.builtin.copy:
+        src: mysql.repo
+        dest: /etc/yum.repos.d/mysql.repo
 
     - name: disable MySQL 8 version.
       ansible.builtin.shell: dnf module disable mysql -y
