@@ -23,7 +23,7 @@
           state: absent
 
     - name: Download and extract a file
-      ansible.builtin.file
+      ansible.builtin.unarchive:
           src: https://expense-artifacts.s3.amazonaws.com/frontend.zip
           dest: /usr/share/nginx/html
           remote_src: yes
