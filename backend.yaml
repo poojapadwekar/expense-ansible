@@ -27,7 +27,7 @@
     - name: Download and extract the file
       ansible.builtin.unarchive:
         src: https://expense-artifacts.s3.amazonaws.com/backend.zip
-        dest: /tmp/backend.zip
+        dest: /add
         remote_src: yes
 
     - name: Install Node js & Change the directory
