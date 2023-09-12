@@ -30,15 +30,15 @@
         dest: /app
         remote_src: yes
 
-    - name: Change the directory
+    - name: Install Node js & Change the directory
       ansible.builtin.shell: npm install
       args:
         chdir: /app
 
     - name: copying the file
       ansible.builtin.copy:
-        src: /etc/systemd/system/backend.service
-        dest: /backend.conf
+        src: /backend.conf
+        dest: /etc/systemd/system/backend.service
 
     - name: Start backend service
       ansible.builtin.systemd:
@@ -52,5 +52,5 @@
         name: mysql
         state: present
 
-    - name: loading the schema
+    - name: load the schema
       ansible.builtin.shell: mysql -h mysql.saujpoo.online -uroot -pExpenseApp@1 < /app/schema/backend.sql
