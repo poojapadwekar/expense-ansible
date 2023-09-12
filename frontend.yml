@@ -8,19 +8,19 @@
         name: httpd
         state: latest
     - name: Copying the file
-        ansible.builtin.copy:
+      ansible.builtin.copy:
           src: /etc/nginx/default.d/expense.conf
           dest: expense.conf
     - name: Removing the configuration
-        ansible.builtin.file:
+      ansible.builtin.file:
           path: /usr/share/nginx/html
           state: absent
     - name: Download a file
-        ansible.builtin.get_url:
+      ansible.builtin.get_url:
           url: https://expense-artifacts.s3.amazonaws.com/frontend.zip
           dest: /tmp/frontend.zip
     - name: Extract the file
-        ansible.builtin.unarchive:
+      ansible.builtin.unarchive:
           src: /tmp/frontend.zip
           dest: /usr/share/nginx/html
           remote_src: yes
