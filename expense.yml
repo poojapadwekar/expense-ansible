@@ -1,5 +1,5 @@
 - name: expense ansible
   hosts: all
-  becomes: yes
+  become: yes
   roles:
     - "{{ role_name }}"
