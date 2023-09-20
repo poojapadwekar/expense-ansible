@@ -15,7 +15,7 @@
   ansible.builtin.systemd:
     name: mysqld
     state: restarted
-    enabled: yes
+
 
 
 - name: set root password
