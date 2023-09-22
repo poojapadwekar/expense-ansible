@@ -2,7 +2,12 @@
   ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
 - name: verify the nodejs
-  ansible.builtin.shell: type node
+  ansible.builtin.shell: type npm
+  register: npm
+
+- name: read npm
+  ansible.builtin.debug:
+    msg: "{{npm}}"
 
 - name: Install NodeJS
   ansible.builtin.dnf:
