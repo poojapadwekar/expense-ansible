@@ -14,7 +14,7 @@
     when: npm.rc !=0
 
 - name: copying the file
-  ansible.builtin.copy:
+  ansible.builtin.template:
   src: backend.conf
   dest: /etc/systemd/system/backend.service
 
