@@ -18,10 +18,6 @@
         path: /usr/share/nginx/html
         state: absent
 
-
-
-
-
     - name: Download frontend code and Extract it
       ansible.builtin.unarchive:
         src: https://expense-artifacts.s3.amazonaws.com/frontend.zip
