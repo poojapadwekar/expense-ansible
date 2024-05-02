@@ -1,5 +1,5 @@
 - name: Frontend Setup
-  hosts: 172.31.27.37
+  hosts: all
   become: yes
   tasks:
     - name: Install Nginx
