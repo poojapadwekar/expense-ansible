@@ -19,7 +19,7 @@
         state: present
 
     - name: Start MySQL Service
-      ansible.builtin.service:
+      ansible.builtin.systemd:
         name: MySQL
         state: restarted
         enabled: yes
