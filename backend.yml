@@ -38,7 +38,7 @@
 
     - name: Download frontend code and Extract it
       ansible.builtin.unarchive:
-        src: https://expense-artifacts.s3.amazonaws.com/bakend.zip
+        src: https://expense-artifacts.s3.amazonaws.com/backend.zip
         dest: /app
         remote_src: yes
 
