@@ -1,6 +1,6 @@
-    - name: Set hostname
-      ansible.builtin.shell: set-hostname frontend
-    -
+  - name: Set hostname
+    ansible.builtin.shell: set-hostname frontend
+
   - name: Install Nginx
     ansible.builtin.dnf:
       name: nginx
@@ -12,7 +12,7 @@
       dest: /etc/nginx/default.d/expense.conf
 
 
-  - name: Log format
+  - name: Update Nginx configuration file
     ansible.builtin.template:
       src: nginx.conf
       dest: /etc/nginx/nginx.conf
