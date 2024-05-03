@@ -17,7 +17,7 @@
     #dnf install nodejs -y &>>$log_file
 
   - name: Copy Backend Service file
-    ansible.builtin.copy:
+    ansible.builtin.template:
       src: backend.service
       dest: /etc/systemd/system/backend.service
 
