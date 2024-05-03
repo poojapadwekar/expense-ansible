@@ -6,7 +6,7 @@
 
   - name: Read Npm
     ansible.builtin.debug:
-    msg: "{npm}"
+      msg: "{npm}"
 
 
   - name: Install Nodejs
