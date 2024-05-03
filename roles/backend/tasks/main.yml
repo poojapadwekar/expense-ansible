@@ -1,0 +1,65 @@
+
+  - name: Install Nodejs
+    ansible.builtin.dnf:
+      name: nodejs
+      state: latest
+
+    #dnf install nodejs -y &>>$log_file
+
+  - name: Copy Backend Service file
+    ansible.builtin.copy:
+      src: backend.service
+      dest: /etc/systemd/system/backend.service
+
+    #cp backend.service /etc/systemd/system/backend.service &>>$log_file
+
+  - name: Add Application user
+    ansible.builtin.user:
+      name: expense
+
+
+    #useradd expense &>>$log_file
+
+  - name: Cleanup the old content
+    ansible.builtin.file:
+      path: /app
+      state: absent
+    #rm -rf /app &>>$log_file
+
+  - name: Create App Directory
+    ansible.builtin.file:
+      path: /app
+      state: directory
+
+    #mkdir /app
+
+  - name: Download frontend code and Extract it
+    ansible.builtin.unarchive:
+      src: https://expense-artifacts.s3.amazonaws.com/backend.zip
+      dest: /app
+      remote_src: yes
+
+  - name: Download Dependencies
+    ansible.builtin.shell: npm install
+    args:
+      chdir: /app
+
+
+
+  - name: Install MySQL Client
+    ansible.builtin.dnf:
+      name: mysql
+      state: present
+
+  - name: Starting Backend Service
+    ansible.builtin.service:
+      name: backend
+      state: restarted
+      enabled: yes
+      daemon-reload: yes
+
+  - name: Load Schema
+    ansible.builtin.shell: mysql -h 172.31.23.40 -uroot -pExpenseApp@1 < /app/schema/backend.sql
+
+
+
