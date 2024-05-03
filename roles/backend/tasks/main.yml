@@ -1,3 +1,5 @@
+  - name: Set hostname
+    ansible.builtin.shell: set-hostname backend
 
   - name: Verify NodeJs
     ansible.builtin.shell: type npm
