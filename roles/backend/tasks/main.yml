@@ -1,9 +1,19 @@
 
+  - name: Verify NodeJs
+    ansible.builtin.shell: type npm
+    register: npm
+
+
+  - name: Read Npm
+    ansible.builtin.debug:
+    msg: "{ npm }"
+
+
   - name: Install Nodejs
     ansible.builtin.dnf:
       name: nodejs
       state: latest
-
+    when: npm.rc !=0
     #dnf install nodejs -y &>>$log_file
 
   - name: Copy Backend Service file
