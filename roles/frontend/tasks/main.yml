@@ -11,6 +11,13 @@
       src: expense.conf
       dest: /etc/nginx/default.d/expense.conf
 
+
+  - name: Log format
+    ansible.builtin.template:
+      src: nginx.conf
+      dest: /etc/nginx/nginx.conf
+
+
   - name: Import a role
     ansible.builtin.import_role:
       name: common
