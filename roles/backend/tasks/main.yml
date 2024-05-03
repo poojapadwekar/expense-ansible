@@ -30,24 +30,10 @@
 
     #useradd expense &>>$log_file
 
-  - name: Cleanup the old content
-    ansible.builtin.file:
-      path: /app
-      state: absent
-    #rm -rf /app &>>$log_file
-
-  - name: Create App Directory
-    ansible.builtin.file:
-      path: /app
-      state: directory
-
-    #mkdir /app
-
-  - name: Download frontend code and Extract it
-    ansible.builtin.unarchive:
-      src: https://expense-artifacts.s3.amazonaws.com/backend.zip
-      dest: /app
-      remote_src: yes
+  - name: Import a role
+    ansible.builtin.import_role:
+      name: common
+      tasks from: app_prereq.yml
 
   - name: Download Dependencies
     ansible.builtin.shell: npm install
